@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "@/firebase/firebase"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
+import { Spinner } from "@nextui-org/react";
 
 type AuthPageProps = {}
 
@@ -21,7 +22,7 @@ const AuthPage: React.FC<AuthPageProps> = (props: AuthPageProps) => {
         }
     }, [user, router, loading])
 
-    if (loading) return <p>loading...</p>
+    if (loading) return <Spinner label="Loading..." />
     if (error) {
         alert(error)
         return
