@@ -1,12 +1,12 @@
 import Link from "next/link"
 
 import { useSetRecoilState } from "recoil"
-import { authModalState } from "@/atom/authModalAtom"
+import { authModalAtom } from "@/atom/authModalAtom"
 
 type NavBarProps = {}
 
 const NavBar: React.FC<NavBarProps> = (props: NavBarProps) => {
-    const setAuthState = useSetRecoilState(authModalState)
+    const setAuthState = useSetRecoilState(authModalAtom)
     const handleClick = () => {
         setAuthState(prev => ({ ...prev, isOpen: true, type: "login" }))
     }

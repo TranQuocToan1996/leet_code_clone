@@ -2,12 +2,12 @@ import AuthModal from "@/components/Modal/AuthModal"
 import NavBar from "@/components/Navbar/Navbar"
 
 import { useRecoilValue } from "recoil"
-import { authModalState } from "@/atom/authModalAtom"
+import { authModalAtom } from "@/atom/authModalAtom"
 
 type AuthPageProps = {}
 
 const AuthPage: React.FC<AuthPageProps> = (props: AuthPageProps) => {
-    const authModal = useRecoilValue(authModalState)
+    const authModal = useRecoilValue(authModalAtom)
     return (
         <div className="bg-gradient-to-b from-gray-600 to-black h-screen relative">
             <div className="mx-auto max-w-7xl">

@@ -11,7 +11,7 @@ const authModalStateInit :AuthModalState = {
     type: "login"
 }
 
-export const authModalState = atom<AuthModalState>({
+export const authModalAtom = atom<AuthModalState>({
     "key": "authModalState",
     default: authModalStateInit
 })

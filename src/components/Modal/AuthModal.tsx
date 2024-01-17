@@ -4,12 +4,12 @@ import Login from "./Login";
 import ResetPassword from "./ResetPassword";
 import Signup from "./Signup";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { AuthModalState, authModalState } from "@/atom/authModalAtom";
+import { AuthModalState, authModalAtom } from "@/atom/authModalAtom";
 
 type AuthModalProps = {};
 
 const AuthModal: React.FC<AuthModalProps> = () => {
-    const authModal = useRecoilValue<AuthModalState>(authModalState);
+    const authModal = useRecoilValue<AuthModalState>(authModalAtom);
     const closeModal = useCloseModal();
     return (
         <>
@@ -39,7 +39,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
 export default AuthModal;
 
 function useCloseModal(): (any) {
-    const setAuthModal = useSetRecoilState(authModalState);
+    const setAuthModal = useSetRecoilState(authModalAtom);
 
     const closeModal = () => {
         setAuthModal((prev) => ({ ...prev, isOpen: false, type: "login" }));
