@@ -6,6 +6,7 @@ import { auth } from "@/firebase/firebase"
 import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/router";
 import { CgSpinner } from "react-icons/cg";
+import { toast } from "react-toastify"
 
 
 type LoginProps = {}
@@ -24,13 +25,14 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
     useEffect(() => { if (error) alert(error) }, [error])
     const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (!inputs.email || !inputs.password) return alert("Please fill all fields");
+        if (!inputs.email || !inputs.password) return toast.error("Please fill all fields");
         try {
             const newUser = await signInWithEmailAndPassword(inputs.email, inputs.password)
             if (!newUser) return
+            toast.success("Logged in", { position: "top-center", autoClose: 3000, theme: "dark" })
             router.push("/")
-        } catch (error) {
-            alert(error)
+        } catch (error: any) {
+            toast.error(error.message, { position: "top-center", autoClose: 3000, theme: "dark" });
         }
     }
 
