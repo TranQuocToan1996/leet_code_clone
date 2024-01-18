@@ -5,7 +5,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebase"
 import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/router";
-import { Spinner } from "@nextui-org/react";
+import { CgSpinner } from "react-icons/cg";
 
 
 type LoginProps = {}
@@ -34,7 +34,7 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
         }
     }
 
-    if (loading) return <Spinner label="Loading..." />
+    if (loading) return <CgSpinner />
     return (
         <form className="space-y-6 px-6 pb-4" onSubmit={handleLogin}>
             <h3 className="text-white text-xl font-medium">Sign in to LeetClone</h3>

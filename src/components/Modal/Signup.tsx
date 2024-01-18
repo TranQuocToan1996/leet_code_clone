@@ -5,7 +5,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebase"
 import { useRouter } from "next/router";
-import { Spinner } from "@nextui-org/react";
+import { CgSpinner } from "react-icons/cg";
 
 type SignUpProps = {}
 
@@ -34,7 +34,7 @@ const SignUp: React.FC<SignUpProps> = (props: SignUpProps) => {
 
     useEffect(() => { if (error) alert(error) }, [error])
 
-    if (loading) return <Spinner label="Loading..." />
+    if (loading) return <CgSpinner />
     return (
         <form className="space-y-6 px-6 pb-4" onSubmit={handleRegister}>
             <h3 className="text-white text-xl font-medium">Register to LeetClone</h3>
