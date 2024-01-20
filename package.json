@@ -13,6 +13,7 @@
     "@nextui-org/react": "^2.2.9",
     "@uiw/codemirror-theme-vscode": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
+    "assert": "^2.1.0",
     "firebase": "^10.7.1",
     "framer-motion": "^10.18.0",
     "next": "14.0.4",
