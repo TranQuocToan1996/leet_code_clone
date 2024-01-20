@@ -59,7 +59,8 @@ const mockProblems: DBProblem[] = [
 		order: 6,
 		videoId: "",
 		likes: 0,
-		dislikes: 0
+		dislikes: 0,
+		link: "https://leetcode.com/problems/container-with-most-water/description/"
 	},
 	{
 		id: "merge-intervals",
@@ -69,7 +70,8 @@ const mockProblems: DBProblem[] = [
 		order: 7,
 		videoId: "",
 		likes: 0,
-		dislikes: 0
+		dislikes: 0,
+		link: "https://leetcode.com/problems/merge-intervals/description/"
 	},
 	{
 		id: "maximum-depth-of-binary-tree",
@@ -79,7 +81,8 @@ const mockProblems: DBProblem[] = [
 		order: 8,
 		videoId: "4qYTqOiRMoM",
 		likes: 0,
-		dislikes: 0
+		dislikes: 0,
+		link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/description/"
 	},
 	{
 		id: "best-time-to-buy-and-sell-stock",
@@ -89,7 +92,8 @@ const mockProblems: DBProblem[] = [
 		order: 9,
 		videoId: "",
 		likes: 0,
-		dislikes: 0
+		dislikes: 0,
+		link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/"
 	},
 	{
 		id: "subsets",
@@ -99,7 +103,8 @@ const mockProblems: DBProblem[] = [
 		order: 10,
 		videoId: "",
 		likes: 0,
-		dislikes: 0
+		dislikes: 0,
+		link: "https://leetcode.com/problems/subsets/description/"
 	},
 ];
 

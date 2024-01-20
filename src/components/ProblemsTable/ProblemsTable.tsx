@@ -44,8 +44,9 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({ setIsloading }) => {
                             <BsCheckCircle fontSize={18} width={18} />
                         </th>
                         <td>
-                            <Link className="hover:text-blue-600 cursor-pointer" href={`/problems/${problem.id}`}>
-                                {`${index + 1}. ${problem.title}`}
+                            <Link className="hover:text-blue-600 cursor-pointer" target="_blank" rel="noreferrer"
+                                href={problem.link ? problem.link : `/problems/${problem.id}`}>
+                                {problem.title}
                             </Link>
                         </td>
                         <td className={`px-6 py-4 ${getDifficultyColor(problem.difficulty)}`}>
