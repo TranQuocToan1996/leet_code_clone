@@ -1,9 +1,5 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import Topbar from '@/components/Topbar/Topbar'
 import ProblemsTable from '@/components/ProblemsTable/ProblemsTable'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
@@ -28,7 +24,6 @@ export default function Home() {
                 <th scope='col' className='px-6 py-3 w-0 font-medium'>
                   Difficulty
                 </th>
-
                 <th scope='col' className='px-6 py-3 w-0 font-medium'>
                   Category
                 </th>
