@@ -1,13 +1,6 @@
-export type Problem = {
-	id: string;
-	title: string;
-	difficulty: "Easy" | "Medium"| "Hard";
-	category: string;
-	order: number;
-	videoId?: string;
-};
+import { DBProblem } from "@/utils/types/problem";
 
-export const problems: Problem[] = [
+const mockProblems: DBProblem[] = [
 	{
 		id: "two-sum",
 		title: "Two Sum",
@@ -15,6 +8,8 @@ export const problems: Problem[] = [
 		category: "Array",
 		order: 1,
 		videoId: "8-k1C6ehKuw",
+		likes: 0,
+		dislikes: 0
 	},
 	{
 		id: "reverse-linked-list",
@@ -23,6 +18,8 @@ export const problems: Problem[] = [
 		category: "Linked List",
 		order: 2,
 		videoId: "RF_M9tX4Eag",
+		likes: 0,
+		dislikes: 0
 	},
 	{
 		id: "jump-game",
@@ -31,6 +28,8 @@ export const problems: Problem[] = [
 		category: "Dynamic Programming",
 		order: 3,
 		videoId: "",
+		likes: 0,
+		dislikes: 0
 	},
 	{
 		id: "valid-parentheses",
@@ -39,6 +38,8 @@ export const problems: Problem[] = [
 		category: "Stack",
 		order: 4,
 		videoId: "xty7fr-k0TU",
+		likes: 0,
+		dislikes: 0
 	},
 	{
 		id: "search-a-2d-matrix",
@@ -47,6 +48,8 @@ export const problems: Problem[] = [
 		category: "Binary Search",
 		order: 5,
 		videoId: "ZfFl4torNg4",
+		likes: 0,
+		dislikes: 0
 	},
 	{
 		id: "container-with-most-water",
@@ -55,6 +58,8 @@ export const problems: Problem[] = [
 		category: "Two Pointers",
 		order: 6,
 		videoId: "",
+		likes: 0,
+		dislikes: 0
 	},
 	{
 		id: "merge-intervals",
@@ -63,6 +68,8 @@ export const problems: Problem[] = [
 		category: "intervals",
 		order: 7,
 		videoId: "",
+		likes: 0,
+		dislikes: 0
 	},
 	{
 		id: "maximum-depth-of-binary-tree",
@@ -71,6 +78,8 @@ export const problems: Problem[] = [
 		category: "Tree",
 		order: 8,
 		videoId: "4qYTqOiRMoM",
+		likes: 0,
+		dislikes: 0
 	},
 	{
 		id: "best-time-to-buy-and-sell-stock",
@@ -79,6 +88,8 @@ export const problems: Problem[] = [
 		category: "Array",
 		order: 9,
 		videoId: "",
+		likes: 0,
+		dislikes: 0
 	},
 	{
 		id: "subsets",
@@ -87,5 +98,9 @@ export const problems: Problem[] = [
 		category: "Backtracking",
 		order: 10,
 		videoId: "",
+		likes: 0,
+		dislikes: 0
 	},
 ];
+
+export default mockProblems

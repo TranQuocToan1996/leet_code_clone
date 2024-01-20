@@ -1,14 +1,19 @@
-import { problems } from "@/mockProblems/problems"
-import Link from "next/link"
-import { useEffect, useState } from "react"
-import { AiFillYoutube } from "react-icons/ai"
-import { BsCheckCircle } from "react-icons/bs"
-import { IoClose } from "react-icons/io5"
-import YouTube from "react-youtube"
+import Link from "next/link";
+import { useEffect, useState, Dispatch, SetStateAction } from "react";
+import { BsCheckCircle } from "react-icons/bs";
+import { AiFillYoutube } from "react-icons/ai";
+import { IoClose } from "react-icons/io5";
+import YouTube from "react-youtube";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { firestore } from "@/firebase/firebase";
+import { DBProblem } from "@/utils/types/problem";
+import mockProblems from "@/mockProblems/problems"
 
-type ProblemsTableProps = {}
+type ProblemsTableProps = {
+    setIsloading: Dispatch<SetStateAction<boolean>>
+}
 
-const ProblemsTable: React.FC<ProblemsTableProps> = (props: ProblemsTableProps) => {
+const ProblemsTable: React.FC<ProblemsTableProps> = ({ setIsloading }) => {
     const [youtubePlayer, setYoutubePlayer] = useState({
         isOpen: false,
         videoId: ''
@@ -21,6 +26,8 @@ const ProblemsTable: React.FC<ProblemsTableProps> = (props: ProblemsTableProps) 
         })
     }
 
+    const problems = useGetProblems(setIsloading)
+
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
             if (e.key === 'Escape') closePlayer()
@@ -28,7 +35,6 @@ const ProblemsTable: React.FC<ProblemsTableProps> = (props: ProblemsTableProps) 
         window.addEventListener('keydown', handleEsc)
         return () => { window.removeEventListener('keydown', handleEsc) }
     })
-
     return <>
         <tbody className="text-white">
             {problems.map((problem, index) => {
@@ -75,7 +81,37 @@ const ProblemsTable: React.FC<ProblemsTableProps> = (props: ProblemsTableProps) 
     </>
 }
 
-const getDifficultyColor = (difficulty: "Easy" | "Medium" | "Hard"): string => {
+const useGetProblems = (setIsloading: Dispatch<SetStateAction<boolean>>) => {
+    const [problems, setProblems] = useState<DBProblem[]>([]);
+
+    useEffect(() => {
+        const getProblems = async () => {
+            const tmp: DBProblem[] = [];
+            try {
+                setIsloading(true);
+                const q = query(collection(firestore, "problems"), orderBy("order", "asc"));
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach((doc) => {
+                    tmp.push({ id: doc.id, ...doc.data() } as DBProblem);
+                });
+            } catch (error) {
+                console.log(error)
+                for (let i = 0; i < mockProblems.length; i++) {
+                    tmp.push(mockProblems[i])
+                }
+            } finally {
+                setProblems(tmp);
+                setIsloading(false);
+            }
+
+        };
+        getProblems();
+    }, [setIsloading]);
+
+    return problems;
+}
+
+const getDifficultyColor = (difficulty: string): string => {
     switch (difficulty) {
         case "Easy":
             return "text-dark-green-s"
