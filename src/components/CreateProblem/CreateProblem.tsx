@@ -9,8 +9,8 @@ type CreateProblemProps = {}
 const emptyProblem = {
     id: "",
     title: "",
-    difficuty: "",
-    caterogy: "",
+    difficulty: "",
+    category: "",
     videoId: "",
     link: "",
     order: 0,
