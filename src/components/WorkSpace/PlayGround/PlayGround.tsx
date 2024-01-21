@@ -1,9 +1,9 @@
 import ReactCodeMirror from "@uiw/react-codemirror"
-import PreferenceNav from "./PreferenceNav/PreferenceNav"
+import PreferenceNav from "@/components/WorkSpace/PlayGround/PreferenceNav/PreferenceNav"
 import Split from "react-split"
 import { vscodeDark } from "@uiw/codemirror-theme-vscode"
 import { javascript } from "@codemirror/lang-javascript"
-import EditorFooter from "./EditorFooter"
+import EditorFooter from "@/components/WorkSpace/PlayGround/EditorFooter"
 import { Problem } from "@/utils/types/problem"
 import { useState } from "react"
 
