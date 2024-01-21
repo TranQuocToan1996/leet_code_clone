@@ -63,7 +63,7 @@ const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
                         </a>
                     </div>
 
-                    {props.problemPage && <Timer />}
+                    {props.problemPage && user && <Timer />}
 
                     {!user ? (
                         <Link href='/auth' onClick={handleClickSignIn}>

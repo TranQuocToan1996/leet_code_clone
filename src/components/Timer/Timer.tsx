@@ -28,17 +28,18 @@ const Timer: React.FC<TimerProps> = () => {
         return () => clearInterval(intervalId);
     }, [showTimer]);
 
+    const handleOffTimer = () => {
+        setShowTimer(false);
+        setTime(0);
+    }
+
     return (
         <div>
             {showTimer ? (
-                <div className='flex items-center space-x-2 bg-dark-fill-3 p-1.5 cursor-pointer rounded hover:bg-dark-fill-2'>
+                <div className='flex items-center space-x-2 bg-dark-fill-3 p-1.5 cursor-pointer rounded hover:bg-dark-fill-2'
+                    onClick={handleOffTimer}>
                     <div>{formatTime(time)}</div>
-                    <FiRefreshCcw
-                        onClick={() => {
-                            setShowTimer(false);
-                            setTime(0);
-                        }}
-                    />
+                    <FiRefreshCcw />
                 </div>
             ) : (
                 <div
