@@ -39,21 +39,46 @@ const CreateProblem: React.FC<CreateProblemProps> = (props: CreateProblemProps) 
             toast.error(error)
         }
     }
-    // TODO: Add label, fix CSS
     return (
         <>
-            <form className='flex flex-col p-6 gap-3 max-w-sm'
-                onSubmit={handleSubmit}
-            >
-                <input type="text" onChange={handleChange} placeholder='id' name='id' />
-                <input type="text" onChange={handleChange} placeholder='title' name='title' />
-                <input type="text" onChange={handleChange} placeholder='difficuty' name='difficuty' />
-                <input type="text" onChange={handleChange} placeholder='caterogy' name='caterogy' />
-                <input type="text" onChange={handleChange} placeholder='videoId' name='videoId' />
-                <input type="text" onChange={handleChange} placeholder='link' name='link' />
-                <input type="number" onChange={handleChange} placeholder='order' name='order'
-                />
-                <button className='bg-white'>Save problem</button>
+            <form className='flex flex-col p-6 gap-3 max-w-sm' onSubmit={handleSubmit}>
+
+                <div className="flex flex-col">
+                    <label htmlFor="id" className='text-white mb-1'>ID:</label>
+                    <input type="text" onChange={handleChange} placeholder='id' name='id' id='id' />
+                </div>
+
+                <div className="flex flex-col">
+                    <label htmlFor="title" className='text-white mb-1'>Title:</label>
+                    <input type="text" onChange={handleChange} placeholder='title' name='title' id='title' />
+                </div>
+
+                <div className="flex flex-col">
+                    <label htmlFor="difficulty" className='text-white mb-1'>Difficulty:</label>
+                    <input type="text" onChange={handleChange} placeholder='difficulty' name='difficulty' id='difficulty' />
+                </div>
+
+                <div className="flex flex-col">
+                    <label htmlFor="category" className='text-white mb-1'>Category:</label>
+                    <input type="text" onChange={handleChange} placeholder='category' name='category' id='category' />
+                </div>
+
+                <div className="flex flex-col">
+                    <label htmlFor="videoId" className='text-white mb-1'>Video ID:</label>
+                    <input type="text" onChange={handleChange} placeholder='videoId' name='videoId' id='videoId' />
+                </div>
+
+                <div className="flex flex-col">
+                    <label htmlFor="link" className='text-white mb-1'>Link:</label>
+                    <input type="text" onChange={handleChange} placeholder='link' name='link' id='link' />
+                </div>
+
+                <div className="flex flex-col">
+                    <label htmlFor="order" className='text-white mb-1'>Order:</label>
+                    <input type="number" onChange={handleChange} placeholder='order' name='order' id='order' />
+                </div>
+
+                <button className='bg-white mt-3'>Save problem</button>
             </form>
         </>
     )
