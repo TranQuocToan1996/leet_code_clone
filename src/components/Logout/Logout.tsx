@@ -19,7 +19,7 @@ const LogOut: React.FC<LogOutProps> = (props: LogOutProps) => {
     useEffect(() => {
         if (error) alert(error)
     }, [error])
-    if (loading) return <CgSpinner />
+    if (loading) return <CgSpinner  className="animate-spin"/>
     return (
         <button className="bg-dark-fill-3 py-1.5 px-3 rounded text-brand-orange" onClick={handleLogout}>
             <FiLogOut />

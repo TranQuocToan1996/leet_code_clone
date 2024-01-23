@@ -36,7 +36,7 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
         }
     }
 
-    if (loading) return <CgSpinner />
+    if (loading) return <CgSpinner className="animate-spin" />
     return (
         <form className="space-y-6 px-6 pb-4" onSubmit={handleLogin}>
             <h3 className="text-white text-xl font-medium">Sign in to LeetClone</h3>
