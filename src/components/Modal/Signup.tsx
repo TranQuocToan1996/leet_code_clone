@@ -52,7 +52,7 @@ const SignUp: React.FC<SignUpProps> = (props: SignUpProps) => {
 
     useEffect(() => { if (error) alert(error) }, [error])
 
-    if (loading) return <CgSpinner />
+    if (loading) return <CgSpinner className="animate-spin" />
     return (
         <form className="space-y-6 px-6 pb-4" onSubmit={handleRegister}>
             <h3 className="text-white text-xl font-medium">Register to LeetClone</h3>

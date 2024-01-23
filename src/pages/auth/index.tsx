@@ -22,7 +22,7 @@ const AuthPage: React.FC<AuthPageProps> = (props: AuthPageProps) => {
         }
     }, [user, router, loading])
 
-    if (loading) return <CgSpinner />
+    if (loading) return <CgSpinner className="animate-spin" />
     if (error) {
         alert(error)
         return

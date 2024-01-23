@@ -29,22 +29,24 @@ const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
         }))
     }
     const handleProblemChange = (isForward: boolean) => {
-        const { order } = problems[router.query.pid as string] as Problem;
+        const pid = router.query.pid as string
+        const order = problems[pid].order;
         const direction = isForward ? 1 : -1;
-        const nextProblemOrder = order + direction;
-        const nextProblemKey = Object.keys(problems).find((key) => problems[key].order === nextProblemOrder);
-
-        if (isForward && !nextProblemKey) {
-            const firstProblemKey = Object.keys(problems).find((key) => problems[key].order === 1);
-            router.push(`/problems/${firstProblemKey}`);
-        } else if (!isForward && !nextProblemKey) {
-            const lastProblemKey = Object.keys(problems).find(
-                (key) => problems[key].order === Object.keys(problems).length
-            );
-            router.push(`/problems/${lastProblemKey}`);
-        } else {
-            router.push(`/problems/${nextProblemKey}`);
+        const nextOrder = order + direction;
+        let nextKey = Object.keys(problems).find((key) => problems[key].order === nextOrder);
+        if (!nextKey) {
+            if (isForward) {
+                nextKey = Object.keys(problems).find(
+                    key => problems[key].order === 1
+                );
+            } else {
+                nextKey = Object.keys(problems).find(
+                    key => problems[key].order === Object.keys(problems).length
+                );
+            }
         }
+
+        router.push(`/problems/${nextKey}`);
     };
     if (loading) return <CgSpinner />
     return (
