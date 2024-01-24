@@ -12,12 +12,19 @@ import { toast, ToastOptions } from "react-toastify"
 import { useRouter } from "next/router"
 import { problems } from "@/utils/problems"
 import { arrayUnion, doc, updateDoc } from "firebase/firestore"
+import useLocalStorage from "@/hook/useLocalStorage"
 
 
 type PlayGroundProps = {
     problem: Problem
     setSuccess: React.Dispatch<React.SetStateAction<boolean>>
     setSolved: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export interface ISetting {
+    fontSize: string
+    settingModalIsOpen: boolean
+    dropdownIsOpen: boolean
 }
 
 const PlayGround: React.FC<PlayGroundProps> = ({ problem, setSuccess, setSolved }) => {
@@ -31,6 +38,13 @@ const PlayGround: React.FC<PlayGroundProps> = ({ problem, setSuccess, setSolved 
         setUserCode(value)
         localStorage.setItem(keyProblem, value)
     }
+
+    const [fontSize] = useLocalStorage("lcc-fontSize", "16px");
+    const [settings, setSettings] = useState<ISetting>({
+        fontSize: fontSize,
+        settingModalIsOpen: false,
+        dropdownIsOpen: false
+    })
 
     useEffect(() => {
         if (!user) return
@@ -92,7 +106,7 @@ const PlayGround: React.FC<PlayGroundProps> = ({ problem, setSuccess, setSolved 
 
     return (
         <div className="flex flex-col bg-dark-layer-1 relative overflow-x-hidden">
-            <PreferenceNav />
+            <PreferenceNav settings={settings} setSettings={setSettings} />
 
             <Split className="h-[calc(100vh-94px)]" direction="vertical" sizes={[60, 40]} minSize={60}>
                 <div className="w-full overflow-auto">
@@ -100,7 +114,7 @@ const PlayGround: React.FC<PlayGroundProps> = ({ problem, setSuccess, setSolved 
                         value={userCode}
                         theme={vscodeDark}
                         extensions={[javascript()]}
-                        style={{ fontSize: 16 }}
+                        style={{ fontSize: settings.fontSize }}
                         onChange={onChange}
                     />
                 </div>
