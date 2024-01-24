@@ -5,6 +5,7 @@ import { AiFillYoutube } from "react-icons/ai";
 import { IoClose } from "react-icons/io5";
 import YouTube from "react-youtube";
 import useGetProblems from "@/hook/useGetProblems";
+import useGetSolvedProblems from "@/hook/useGetSolvedProblem";
 
 type ProblemsTableProps = {
     setIsloading: Dispatch<SetStateAction<boolean>>
@@ -24,6 +25,7 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({ setIsloading }) => {
     }
 
     const problems = useGetProblems(setIsloading)
+    const solvedProblems = useGetSolvedProblems()
 
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
@@ -37,8 +39,8 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({ setIsloading }) => {
             {problems.map((problem, index) => {
                 return (
                     <tr key={problem.id} className={`${index % 2 == 1 ? "bg-dark-layer-1" : ""}`}>
-                        <th>
-                            <BsCheckCircle fontSize={18} width={18} />
+                        <th className='px-2 py-4 font-medium whitespace-nowrap text-dark-green-s'>
+                            {solvedProblems.includes(problem.id) && <BsCheckCircle fontSize={"18"} width='18' />}
                         </th>
                         <td>
                             <Link className="hover:text-blue-600 cursor-pointer" target="_blank" rel="noreferrer"
