@@ -82,7 +82,7 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = ({ problem, _solve
 
     const handleDisLiked = async () => {
         if (!user) {
-            toast.error("You must be logged in to like a problem", { position: "top-left", theme: "dark" });
+            toast.error("You must be logged in to dislike a problem", { position: "top-left", theme: "dark" });
             return
         }
         if (updating || loadingProblem || loading) return;
@@ -132,7 +132,7 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = ({ problem, _solve
 
     const handleStared = async () => {
         if (!user) {
-            toast.error("You must be logged in to like a problem", { position: "top-left", theme: "dark" });
+            toast.error("You must be logged in to star a problem", { position: "top-left", theme: "dark" });
             return
         }
         if (updating || loadingProblem || loading) return;
